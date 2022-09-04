@@ -13,9 +13,9 @@ os.remove('W:\\JBSim\\DBinfo\\Output.sql')
 # Create output file
 outPrint = open('W:\\JBSim\\DBinfo\\Output.sql', 'a')
 
+#By table name loop thru the table
 i = 1
 e = 1
-
 while i < len(dfb.index):
         tableName =str(dfb.iloc[i]['TABLE_NAME'])
         rowNew = 'CREATE TABLE ' + tableName +  ' ('
@@ -29,8 +29,12 @@ while i < len(dfb.index):
                             varSize = str(int(dfa.iloc[e]['NUMERIC_PRECISION']))
                         if dfa.iloc[e]['DATETIME_PRECISION'] > 0:
                             varSize = str(int(dfa.iloc[e]['DATETIME_PRECISION']))
+                        if dfa.iloc[e]['IS_NULLABLE'] == 'YES':
+                            nullAble = 'NULL'
+                        if dfa.iloc[e]['IS_NULLABLE'] == 'NO':
+                                nullAble = 'NOT NULL'
                         dataType = dataType.upper()
-                        rowNew = rowNew + columnName + ' ' + dataType + ','
+                        rowNew = rowNew + columnName + ' ' + dataType + ' ' + nullAble + ','
                 e += 1
         else:
                 e += 1

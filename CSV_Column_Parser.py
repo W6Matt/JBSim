@@ -13,11 +13,12 @@ fileColumn = open('W:\\JBSim\\DBinfo\\DB_Columns.csv', 'a')
 # Count Rows
 totalRow = len(df.index)
 
-e = 1
+# Title Column
 tableName = 'TABLE_NAME' + ','
-
 fileColumn.write(tableName)
 
+# loop thru table
+e = 1
 while e < totalRow:
     if tableName == df.iloc[e]['TABLE_NAME']:
         e += 1
@@ -26,9 +27,6 @@ while e < totalRow:
         a = df.iloc[e]['TABLE_NAME']
         print(tableName)
         fileColumn.write('\n' + a + ',')
-
-
-
 
 
 # TABLE_NAME
