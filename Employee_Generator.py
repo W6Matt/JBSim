@@ -8,13 +8,13 @@ dfFirstName = pd.read_csv('W:\\JBSim\\DBinfo\\1000_Male_Names.csv')
 dfSurnames = pd.read_csv('W:\\JBSim\\DBinfo\\2000_Surnames.csv')
 
 # Remove old file
-os.remove('W:\\JBSim\\DBinfo\\Employee_upload.txt')
+os.remove('W:\\JBSim\\DBinfo\\Employee_upload.sql')
 
 # create file
-fileColumn = open('W:\\JBSim\\DBinfo\\Employee_upload.txt', 'a')
+fileColumn = open('W:\\JBSim\\DBinfo\\Employee_upload.sql', 'a')
 
 # Number of Employees to create
-totalEmp = 10
+totalEmp = 100
 
 # Employee Number Start
 empNumStr = str('11')
@@ -31,7 +31,7 @@ while e < totalEmp:
     txtFirst = dfFirstName.iloc[random.randrange(1, 250)]['FIRST_NAME']
     txtSurname = dfSurnames.iloc[random.randrange(1, 2000)]['SURNAME']
     empNumEnd += 1
-    ############ all table Vars
+    # all table Vars
     txtEmployee = empNumStr + str(empNumEnd).zfill(3)
     txtWork_Center = 'NULL'
     txtAddress = 'NULL'
@@ -43,11 +43,11 @@ while e < totalEmp:
     txtType = 'NULL'
     txtStatus = "'Active'"
     txtClass = 'NULL'
-    txtHourly_Rate = 'NULL'
+    txtHourly_Rate = '100.00'
     txtCommission_Pct = 'NULL'
     txtShift_Start = 'NULL'
     txtShift_End = 'NULL'
-    txtHire_Date = 'NULL'
+    txtHire_Date = "'2022-01-01'"
     txtNote_Text = 'NULL'
     txtLast_Updated = 'NULL'
     txtShift = 'NULL'
