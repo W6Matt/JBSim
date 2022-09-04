@@ -20,7 +20,10 @@ outPrint = open('W:\\JBSim\\DBinfo\\Table_insert.txt', 'a')
 #By table name loop thru the table
 e = 1
 
-tableName = 'Employee'
+tableName = 'Work_Center'
+
+# Employee
+# Work_Center
 
 while e < len(df.index):
     if tableName == df.iloc[e]['TABLE_NAME']:
@@ -60,5 +63,4 @@ txtItem = ')'
 outPrint.write(txtItem)
 
 
-#    outPrint.write('\n' + rowNew)
 

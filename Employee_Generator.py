@@ -2,6 +2,15 @@ import pandas as pd
 import os
 import random
 
+'''
+Employee Generator uses data from Table_Parser to create Creates Employee
+    Employee Number 11xxx incremental increases by 1
+    Random selects name from list
+    Random selects surname from list
+    sets hourly rate to $100.
+    set start date to 2022-1-1
+'''
+
 # open CSV file, set to dataframe a
 dfFirstName = pd.read_csv('W:\\JBSim\\DBinfo\\1000_Male_Names.csv')
 
@@ -75,15 +84,3 @@ fileColumn.write('\n ;')
 
 print('Finish')
 
-
-"""
-    CREATE TABLE Employee (Employee VARCHAR NOT NULL,Work_Center VARCHAR NULL,Address INT NULL,User_Values INT NULL,First_Name VARCHAR NULL,Middle_Initial VARCHAR NULL,Last_Name VARCHAR NULL,SSN VARCHAR NULL,Type VARCHAR NOT NULL,Status VARCHAR NOT NULL,Class VARCHAR NOT NULL,Hourly_Rate MONEY NULL,
-    Commission_Pct FLOAT NULL,Shift_Start DATETIME NULL,Shift_End DATETIME NULL,Hire_Date DATETIME NULL,Note_Text TEXT NULL,Last_Updated DATETIME NOT NULL,Shift UNIQUEIDENTIFIER NULL,Department VARCHAR NULL,Supervisor VARCHAR NULL,Default_Tran_Limit SMALLINT NULL,Begin_Tran_Prompt VARCHAR NULL,Repeat_Tran_Prompt VARCHAR NULL,Tran_Repeater BIT NULL,ObjectID UNIQUEIDENTIFIER NOT NULL);
-    if tableName == df.iloc[random.randrange(1, 2000)]['SURNAME']:
-        e += 1
-    else:
-        tableName = df.iloc[e]['TABLE_NAME']
-        a = df.iloc[e]['TABLE_NAME']
-        print(tableName)
-        fileColumn.write('\n' + a + ',')
-"""
