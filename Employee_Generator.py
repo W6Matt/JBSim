@@ -34,7 +34,7 @@ tableName = 'INSERT INTO Employee(Employee, Work_Center, Address, User_Values, F
 fileColumn.write(tableName)
 fileColumn.write('\n' + 'VALUES' + '\n')
 
-# loop thru table
+# loop through table
 e = 1
 while e < totalEmp:
     txtFirst = dfFirstName.iloc[random.randrange(1, 250)]['FIRST_NAME']
@@ -58,7 +58,7 @@ while e < totalEmp:
     txtShift_End = 'NULL'
     txtHire_Date = "'2022-01-01'"
     txtNote_Text = 'NULL'
-    txtLast_Updated = 'NULL'
+    txtLast_Updated = 'NOW()'
     txtShift = 'NULL'
     txtDepartment = 'NULL'
     txtSupervisor = 'NULL'
@@ -66,7 +66,7 @@ while e < totalEmp:
     txtBegin_Tran_Prompt = 'NULL'
     txtRepeat_Tran_Prompt = 'NULL'
     txtTran_Repeater = 'NULL'
-    txtObjectID = 'NULL'
+    txtObjectID = 'MD5(random()::text)'
     print(txtFirst_Name + ' ' + txtLast_Name)
 
     # Concatenate all the variables
@@ -75,7 +75,7 @@ while e < totalEmp:
     # add the comma
     if e > 1:
         fileColumn.write(', \n')
-    # add to the llop
+    # add to the loop
     e += 1
     # write the line
     fileColumn.write(txtVar)

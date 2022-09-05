@@ -20,7 +20,7 @@ outPrint = open('W:\\JBSim\\DBinfo\\Table_insert.txt', 'a')
 #By table name loop thru the table
 e = 1
 
-tableName = 'Work_Center'
+tableName = 'Fiscal_Year'
 
 # Employee
 # Work_Center

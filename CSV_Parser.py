@@ -1,6 +1,12 @@
 import pandas as pd
 import os
 
+'''
+CVS Parser imports DB_Schema.csv and DB_Columns. The script iterates through DB_Columns, matching to Table name
+in DB_Schema. The Script then builds a SQL CREATE TABLE argument with the collected data
+
+'''
+
 # open DB Schema CSV file, set to dataframe a
 dfa = pd.read_csv('W:\\JBSim\\DBinfo\\DB_Schema.csv')
 
