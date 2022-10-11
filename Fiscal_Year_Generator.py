@@ -1,13 +1,12 @@
-import pandas as pd
+from datetime import datetime, timedelta
+
 import os
-import random
+
 
 '''
 Fiscal Year Generator 
 '''
 
-# open CSV file, set to dataframe a
-df = pd.read_csv('W:\\JBSim\\DBinfo\\Fiscal_Year_20-25.csv')
 
 # Remove old file
 os.remove('W:\\JBSim\\DBinfo\\Fiscal_year_upload.txt')
@@ -16,32 +15,33 @@ os.remove('W:\\JBSim\\DBinfo\\Fiscal_year_upload.txt')
 fileColumn = open('W:\\JBSim\\DBinfo\\Fiscal_year_upload.txt', 'a')
 
 # Title Columns
-tableName = 'INSERT INTO Fiscal_Year(Fiscal_Year, Name, Nbr_Periods, Start_Date, End_Date, Last_Updated ) \n'
-fileColumn.write(tableName)
-fileColumn.write('\n' + 'VALUES' + '\n')
+tableName = "INSERT INTO Fiscal_Year (Fiscal_Year, Name, Nbr_Periods, Start_Date, End_Date, Last_Updated ) VALUES "
+
 
 # loop through table
 e = 1
-while e < 366:
-    txtFiscal_Year = "'" + str(int(df.iloc[e]['YEAR'])) + "'"
-    txtName = "'"+ str(df.iloc[e]['FISCAL']) + str(int(df.iloc[e]['YEAR'])) + '_' + str(int(df.iloc[e]['WEEK'])).zfill(2) + "'"
-    txtNbr_Periods = str(int(df.iloc[e]['WEEK']))
-    txtStart_Date = "'" + str(df.iloc[e]['START']) + "'"
-    txtEnd_Date = "'" + str(df.iloc[e]['END']) + "'"
-    txtLast_Updated = 'NOW()'
+
+txtFY = 20
+dateStart = '2019-09-30'
+date_1 = datetime.strptime(dateStart, '%Y-%m-%d')
+txtMon = datetime.strftime(date_1, '%b')
+
+for i in range(1, 6):
+    txtFiscal_Year = 'NEWID()'
+    txtName = 'FY' + str(txtFY)
+    txtStart_Date = str(date_1)
+    txtEnd_Date = str(date_1 + timedelta(days=371))
+    txtLast_Updated = 'CURRENT_TIMESTAMP'
     print('year')
 
     # Concatenate all the variables
-    txtVar = '(' + txtFiscal_Year + ', ' + txtName + ', ' + txtNbr_Periods + ', ' + txtStart_Date + ', ' + txtEnd_Date + ', ' + txtLast_Updated + ')'
+    txtVar = tableName + "(" + txtFiscal_Year + ", '" + txtName + "', " + "'0'" + ", '" + txtStart_Date + "', '" + txtEnd_Date + "', " + txtLast_Updated + "); \n"
 
-    # add the comma
-    if e > 1:
-        fileColumn.write(', \n')
-    # add to the loop
-    e += 1
+
     # write the line
     fileColumn.write(txtVar)
-# add to the end
-fileColumn.write('\n ;')
+    txtFY = txtFY + 1
+    date_1 = date_1 + timedelta(days=364)
+
 
 print('Finish')
